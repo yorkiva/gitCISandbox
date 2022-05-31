@@ -1,6 +1,7 @@
 import sys, os
 
 _files = os.listdir('files')
+checks_passed = True
 for _file in _files:
     f = open('files/' + _file, "r")
     l = f.readlines()
@@ -10,4 +11,6 @@ for _file in _files:
     else:
         print("Checks failed for file: " + _file)
         f.close()
-        sys.exit(1)
+        checks_passed = False
+if not checks_passed:
+    sys.exit(1)
