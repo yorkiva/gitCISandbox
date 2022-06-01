@@ -40,7 +40,8 @@ jobs:
       uses: jitterbit/get-changed-files@v1
       with:
         format: 'csv'
-    - run: |
+    - name: check differences
+      run: |
         echo ${{ steps.files.outputs.modified }} > modified.txt
         echo ${{ steps.files.outputs.added }} > added.txt
         ls -lha
