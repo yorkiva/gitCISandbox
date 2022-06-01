@@ -1,5 +1,6 @@
 import sys, os
 
+print("="*10 + "Running Repo Checker" + "="*10)
 checks_passed = True
 fname_added = "added.txt"
 fname_mod = "modified.txt"
@@ -11,14 +12,17 @@ except:
     sys.exit(1)
     
 modfiles = []
-if len(f_mod.readlines()) > 0:
-    for f in f_mod.readlines():
+f_mod_lines = f_mod.readlines()
+if len(f_mod_lines) > 0:
+    for f in f_mod_lines:
         modfiles += f.strip().split(',')
 for _file in modfiles:
     print("Modified file: " + _file)
     if _file.beginswith('files/'):
         print("Pre-existing file {} modified".format(_file))
         checks_passed = False
+f_mod.close()
+
 try:        
     f_added = open(fname_added, "r")
 except:
@@ -26,11 +30,13 @@ except:
     sys.exit(1)
 
 addedfiles = []
-if len(f_added.readlines()) > 0:
+f_added_lines = f_added.readlines()
+if len(f_added_lines) > 0:
     for f in f_added.readlines():
         addedfiles += f.strip().split(',')
 for _file in addedfiles:
     print("Added file: " + _file)
+f_added.close()
 
 for _file in addedfiles:
     f = open('files/' + _file, "r")
