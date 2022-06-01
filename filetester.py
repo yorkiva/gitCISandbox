@@ -18,7 +18,7 @@ if len(f_mod_lines) > 0:
         modfiles += f.strip().split(',')
 for _file in modfiles:
     print("Modified file: " + _file)
-    if _file.beginswith('files/'):
+    if _file.startswith('files/'):
         print("Pre-existing file {} modified".format(_file))
         checks_passed = False
 f_mod.close()
