@@ -32,7 +32,7 @@ except:
 addedfiles = []
 f_added_lines = f_added.readlines()
 if len(f_added_lines) > 0:
-    for f in f_added.readlines():
+    for f in f_added_lines:
         addedfiles += f.strip().split(',')
 for _file in addedfiles:
     print("Added file: " + _file)
