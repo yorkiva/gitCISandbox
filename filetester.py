@@ -39,7 +39,7 @@ for _file in addedfiles:
 f_added.close()
 
 for _file in addedfiles:
-    f = open('files/' + _file, "r")
+    f = open(_file, "r")
     l = f.readlines()
     if len(l) == 1:
         print("Checks passed for file: " + _file)
