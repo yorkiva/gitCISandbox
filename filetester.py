@@ -10,7 +10,10 @@ except:
     print("{} is not found!".format(fname_mod))
     sys.exit(1)
     
-modfiles = [f.strip().split(',') for f in f_mod.readlines()]
+modfiles = []
+if len(f_mod.readlines()) > 0:
+    for f in f_mod.readlines():
+        modfiles += f.strip().split(',')
 for _file in modfiles:
     print("Modified file: " + _file)
     if _file.beginswith('files/'):
@@ -22,7 +25,10 @@ except:
     print("{} is not found!".format(fname_added))
     sys.exit(1)
 
-addedfiles = [f.strip().split(',') for f in f_added.readlines()]
+addedfiles = []
+if len(f_added.readlines()) > 0:
+    for f in f_added.readlines():
+        addedfiles += f.strip().split(',')
 for _file in addedfiles:
     print("Added file: " + _file)
 
