@@ -32,14 +32,14 @@ except:
 addedfiles = []
 f_added_lines = f_added.readlines()
 if len(f_added_lines) > 0:
-    for f in f_added.readlines():
+    for f in f_added_lines:
         addedfiles += f.strip().split(',')
 for _file in addedfiles:
     print("Added file: " + _file)
 f_added.close()
 
 for _file in addedfiles:
-    f = open('files/' + _file, "r")
+    f = open(_file, "r")
     l = f.readlines()
     if len(l) == 1:
         print("Checks passed for file: " + _file)

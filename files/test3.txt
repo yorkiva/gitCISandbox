@@ -1,1 +1,1 @@
-This is third text file. It should now pass the test.
+This is third text file. It should now pass the test. But now again it won't.
