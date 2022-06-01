@@ -36,8 +36,14 @@ jobs:
 #         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
 #         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: check differences
+      uses: jitterbit/get-changed-files@v1
+      with:
+        format: 'space-delimited'
       run: |
-        git diff --name-status FETCH_HEAD
+      	echo ${{ steps.files.outputs.all }}
+        for changed_file in ${{ steps.files.outputs.all }}; do
+      	    echo "Do something with this ${changed_file}."
+    	done
     - name: Test repo
       run: |
         python filetester.py
