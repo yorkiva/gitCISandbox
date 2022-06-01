@@ -39,10 +39,12 @@ jobs:
     - id: files
       uses: jitterbit/get-changed-files@v1
       with:
-        format: 'space-delimited'
+        format: 'csv'
     - run: |
-        echo ${{ steps.files.outputs.all }}
-        for changed_file in ${{ steps.files.outputs.all }}; do echo "Do something with this ${changed_file}."; done
+        echo ${{ steps.files.outputs.modified }} > modified.txt
+        echo ${{ steps.files.outputs.added }} > added.txt
+        ls -lha
+        # for changed_file in ${{ steps.files.outputs.all }}; do echo "Do something with this ${changed_file}."; done
     - name: Test repo
       run: |
         python filetester.py
